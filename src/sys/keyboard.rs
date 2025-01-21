@@ -41,12 +41,18 @@ impl KeyboardLayout {
     fn from(name: &str) -> Option<Self> {
         match name {
             "azerty" => Some(KeyboardLayout::Azerty(Keyboard::new(
+                ScancodeSet1::new(),
+                layouts::Azerty,
                 HandleControl::MapLettersToUnicode,
             ))),
             "dvorak" => Some(KeyboardLayout::Dvorak(Keyboard::new(
+                ScancodeSet1::new(),
+                layouts::Dvorak104Key,
                 HandleControl::MapLettersToUnicode,
             ))),
             "qwerty" => Some(KeyboardLayout::Qwerty(Keyboard::new(
+                ScancodeSet1::new(),
+                layouts::Us104Key,
                 HandleControl::MapLettersToUnicode,
             ))),
             _ => None,
@@ -91,13 +97,13 @@ fn interrupt_handler() {
         if let Ok(Some(event)) = keyboard.add_byte(scancode) {
             let ord = Ordering::Relaxed;
             match event.code {
-                KeyCode::AltLeft | KeyCode::AltRight => {
+                KeyCode::LAlt | KeyCode::RAltGr => {
                     ALT.store(event.state == KeyState::Down, ord)
                 }
-                KeyCode::ShiftLeft | KeyCode::ShiftRight => {
+                KeyCode::LShift | KeyCode::RShift => {
                     SHIFT.store(event.state == KeyState::Down, ord)
                 }
-                KeyCode::ControlLeft | KeyCode::ControlRight => {
+                KeyCode::LControl | KeyCode::RControl => {
                     CTRL.store(event.state == KeyState::Down, ord)
                 }
                 _ => {}
