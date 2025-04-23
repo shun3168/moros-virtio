@@ -10,6 +10,7 @@
 #![reexport_test_harness_main = "test_main"]
 
 extern crate alloc;
+extern crate virtio_drivers;
 
 #[macro_use]
 pub mod api;
