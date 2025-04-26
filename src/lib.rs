@@ -20,6 +20,9 @@ pub mod sys;
 
 pub mod usr;
 
+#[macro_use]
+pub mod driver;
+
 use bootloader::BootInfo;
 
 const KERNEL_SIZE: usize = 4 << 20; // 4 MB
@@ -40,10 +43,17 @@ pub fn init(boot_info: &'static BootInfo) {
     sys::cpu::init();
     sys::acpi::init(); // Require MEM
     sys::rng::init();
-    sys::pci::init(); // Require MEM
+    sys::pci::init(); // Require MEM    
     sys::net::init(); // Require PCI
     sys::ata::init();
     sys::fs::init(); // Require ATA
+        
+    // driver::virtio_gpu::init(); // initialize VirtIO
+    if let Err(e) = driver::virtio_gpu::init(){
+        log!("Failed to initialize VirtIO-GPU: {:?}", e);
+    } else {
+        log!("VirtIO-GPU initialized.");
+    }
 
     log!("RTC {}", sys::clk::date());
 }
