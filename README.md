@@ -9,12 +9,12 @@ This fork integrates VirtIOGpu from the virtio-drivers crate (version 0.9.0), ma
 Additionally the following functions are implemented.
 <br/><br/>
 
-**pub fn get_resolution() -> Option<(u32, u32)>**
+**- pub fn get_resolution() -> Option<(u32, u32)>**
 
 Returns the current resolution.
 <br/><br/>
 
-**pub fn draw_square(x: u32, y: u32, color_code: u32)**
+**- pub fn draw_square(x: u32, y: u32, color_code: u32)**
 
 Draws 8x8 square at a specified position.
 
@@ -23,7 +23,7 @@ Draws 8x8 square at a specified position.
 `color_code`: A 32-bit color code in 0xAARRGGBB format.
 <br/><br/>
 
-**pub fn draw_image<const W_PIXELS: usize, const H_PIXELS: usize>(image_data_2d: &[[u32; W_PIXELS]; H_PIXELS], dest_x: u32, dest_y: u32,) -> bool**
+**- pub fn draw_image<const W_PIXELS: usize, const H_PIXELS: usize>(image_data_2d: &[[u32; W_PIXELS]; H_PIXELS], dest_x: u32, dest_y: u32,) -> bool**
 
 Displays a image at a specified position.
 
@@ -32,19 +32,19 @@ Displays a image at a specified position.
 `dest_x`, `dest_y`: Top-left corner coordinates on the screen where the image will be drawn.
 <br/><br/>
 
-**pub fn flush_display() -> bool**
+**- pub fn flush_display() -> bool**
 
 Flush Display to make changes visible.
 <br/><br/>
 
-**pub fn set_pointer(cursor_image: &[u8], cursor_width: u32, cursor_height: u32, hot_x: u32, hot_y: u32, ) -> bool**
+**- pub fn set_pointer(cursor_image: &[u8], cursor_width: u32, cursor_height: u32, hot_x: u32, hot_y: u32, ) -> bool**
 
 Sets the cursor shape and its hotspot.
 
 `cursor_image` should be in RGBA8888 format (4 bytes per pixel).
 <br/><br/>
 
-**pub fn move_pointer(pos_x: u32, pos_y: u32) -> bool**
+**- pub fn move_pointer(pos_x: u32, pos_y: u32) -> bool**
 
 Moves the cursor to a new position.
 <br/><br/>
