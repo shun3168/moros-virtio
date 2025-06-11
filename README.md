@@ -18,18 +18,18 @@ Returns the current resolution.
 
 Draws 8x8 square at a specified position.
 
-'x', 'y': Top-left corner coordinates of the square.
+`x`, `y`: Top-left corner coordinates of the square.
 
-'color_code': A 32-bit color code in 0xAARRGGBB format.
+`color_code`: A 32-bit color code in 0xAARRGGBB format.
 <br/><br/>
 
 **pub fn draw_image<const W_PIXELS: usize, const H_PIXELS: usize>(image_data_2d: &[[u32; W_PIXELS]; H_PIXELS], dest_x: u32, dest_y: u32,) -> bool**
 
 Displays a image at a specified position.
 
-'image_data_2d': 2D array representing the image, where each inner array is a row of pixels. Each pixel is assumed to be `u32` in 0xAARRGGBB format.
+`image_data_2d`: 2D array representing the image, where each inner array is a row of pixels. Each pixel is assumed to be `u32` in 0xAARRGGBB format.
 
-'dest_x', 'dest_y': Top-left corner coordinates on the screen where the image will be drawn.
+`dest_x`, `dest_y`: Top-left corner coordinates on the screen where the image will be drawn.
 <br/><br/>
 
 **pub fn flush_display() -> bool**
@@ -41,7 +41,7 @@ Flush Display to make changes visible.
 
 Sets the cursor shape and its hotspot.
 
-'cursor_image' should be in RGBA8888 format (4 bytes per pixel).
+`cursor_image` should be in RGBA8888 format (4 bytes per pixel).
 <br/><br/>
 
 **pub fn move_pointer(pos_x: u32, pos_y: u32) -> bool**
