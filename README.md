@@ -48,7 +48,6 @@ pub fn move_pointer(pos_x: u32, pos_y: u32) -> bool
 
 Moves the cursor to a new position.
 <br/><br/>
-<br/><br/>
 
 ## Setup
 
