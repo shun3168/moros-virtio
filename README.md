@@ -1,4 +1,4 @@
-Original Moros: https://github.com/vinc/moros
+The official Moros repository: https://github.com/vinc/moros
 
 virtio-drivers: https://lib.rs/crates/virtio-drivers
 
