@@ -25,7 +25,7 @@ Draws 8x8 square at a specified position.
 
 **- pub fn draw_image<const W_PIXELS: usize, const H_PIXELS: usize>(image_data_2d: &[[u32; W_PIXELS]; H_PIXELS], dest_x: u32, dest_y: u32,) -> bool**
 
-Displays a image at a specified position.
+Displays a image at a specified position. But the image must be converted first to a special .rs format using image/convert_picture.py. You can find a sample data at src/picture_data.rs.
 
 `image_data_2d`: 2D array representing the image, where each inner array is a row of pixels. Each pixel is assumed to be `u32` in 0xAARRGGBB format.
 
