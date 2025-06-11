@@ -4,7 +4,7 @@ virtio-drivers: https://lib.rs/crates/virtio-drivers
 
 # MOROS with VirtIO integration
 
-VirtIOGpu from virtio-drivers(0.9.0) is integrated and the implementations are made usable. See detail in the documentation. (https://docs.rs/virtio-drivers/0.9.0/virtio_drivers/device/gpu/struct.VirtIOGpu.html)
+This fork integrates VirtIOGpu from the virtio-drivers crate (version 0.9.0), making its graphics capabilities usable within Moros. For detailed VirtIOGpu documentation, refer to: https://docs.rs/virtio-drivers/0.9.0/virtio_drivers/device/gpu/struct.VirtIOGpu.html
 
 Additionally the following functions are implemented.
 <br/><br/>
@@ -53,6 +53,7 @@ Moves the cursor to a new position.
 
 You will need `git`, `gcc`, `make`, `curl`, `qemu-img`,
 and `qemu-system-x86_64` on the host system.
+You will also need python3 and the Pillow library (pip install Pillow) for image conversion.
 
 Clone the repo:
 
@@ -67,7 +68,7 @@ Install the required tools with `make setup` or the following commands:
 
 ## Usage
 
-Place any png file to src/image with the name "picture.png"
+Place your desired PNG image file (e.g., my_image.png) into src/image/ and rename it to picture.png.
 
 Build the image to `disk.img`:
 
