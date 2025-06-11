@@ -7,7 +7,7 @@ setup:
 	cargo install bootimage
 
 # Compilation options
-memory = 32
+memory = 64# increased for framebuffer, Modified by shshi102
 output = video# video, serial
 keyboard = qwerty# qwerty, azerty, dvorak
 mode = release
@@ -25,6 +25,15 @@ monitor = false
 export MOROS_VERSION = $(shell git describe --tags | sed "s/^v//")
 export MOROS_MEMORY = $(memory)
 export MOROS_KEYBOARD = $(keyboard)
+
+# Convert PNG to RS for test picture, Modified by shshi102
+LOGO_DIR := image
+LOGO_PY_SCRIPT := $(LOGO_DIR)/convert_picture.py
+LOGO_PNG_FILE := $(LOGO_DIR)/picture.png
+LOGO_RS_FILE := src/picture_data.rs
+.PHONY: $(LOGO_RS_FILE)# Update picture for every build
+$(LOGO_RS_FILE): $(LOGO_PNG_FILE) $(LOGO_PY_SCRIPT) # Keep dependencies for clarity/documentation
+	@echo "Finished generating $(LOGO_RS_FILE)."
 
 # Build userspace binaries
 
@@ -68,15 +77,21 @@ ifeq ($(mode),release)
 endif
 
 # Rebuild MOROS if the features list changed
-image: $(img)
+# MODIFIED: Added $(LOGO_RS_FILE) as a prerequisite
+image: $(img) $(LOGO_RS_FILE)
 	touch src/lib.rs
 	env | grep MOROS
 	cargo bootimage $(cargo-opts)
 	dd conv=notrunc if=$(bin) of=$(img)
 
+# virtio-gpu-pic, sdl(Display), virtio-mouse are added, Modified by shshi102
 qemu-opts = -m $(memory) -smp $(smp) -drive file=$(img),format=raw \
 			 -audiodev $(audio),id=a0 -machine pcspk-audiodev=a0 \
-			 -netdev user,id=e0,hostfwd=tcp::8080-:80 -device $(nic),netdev=e0
+			 -netdev user,id=e0,hostfwd=tcp::8080-:80 -device $(nic),netdev=e0 \
+			 -device virtio-gpu-pci \
+			 -display sdl \
+			 -device virtio-mouse
+
 ifeq ($(kvm),true)
 	qemu-opts += -cpu host -accel kvm
 else
