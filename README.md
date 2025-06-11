@@ -4,7 +4,7 @@ virtio-drivers: https://lib.rs/crates/virtio-drivers
 
 # MOROS with VirtIO integration
 
-VirtIOGpu from virtio-drivers(0.9.0) is integrated and the implementations are made usable. See detail in the documentation (https://docs.rs/virtio-drivers/0.9.0/virtio_drivers/device/gpu/struct.VirtIOGpu.html).
+VirtIOGpu from virtio-drivers(0.9.0) is integrated and the implementations are made usable. See detail in the documentation. (https://docs.rs/virtio-drivers/0.9.0/virtio_drivers/device/gpu/struct.VirtIOGpu.html)
 
 Additionally the following functions are implemented.
 
