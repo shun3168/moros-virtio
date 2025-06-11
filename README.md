@@ -102,7 +102,7 @@ Cargo.toml, Makefile, src/main.rs, sys/pci.rs, sys/mem/mod.rs, sys/mem/paging.rs
 
 Following files are added.
 
-src/gpu.rs, src/hal.rs, src/picture_data.rs
+src/gpu.rs, src/hal.rs, src/picture_data.rs, image/convert_picture.py, image/picture.png, image/picture1.png, image/picture3.png
 
 ## License
 
