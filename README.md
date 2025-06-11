@@ -94,6 +94,16 @@ Run the test suite in QEMU:
 
     $ make test
 
+## Modification
+
+Following files are modified from the original.
+
+Cargo.toml, Makefile, src/main.rs, sys/pci.rs, sys/mem/mod.rs, sys/mem/paging.rs, sys/mem/phys.rs
+
+Following files are added.
+
+src/gpu.rs, src/hal.rs, src/picture_data.rs
+
 ## License
 
 MOROS is released under MIT.
