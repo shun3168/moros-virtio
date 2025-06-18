@@ -57,7 +57,7 @@ You will also need python3 and the Pillow library (pip install Pillow) for image
 
 Clone the repo:
 
-    $ git clone https://github.com/vinc/moros
+    $ git clone https://github.com/shun3168/moros-virtio
     $ cd moros
 
 Install the required tools with `make setup` or the following commands:
